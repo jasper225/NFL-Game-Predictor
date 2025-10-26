@@ -252,7 +252,7 @@ st.markdown("**Predict NFL game outcomes using real data and machine learning**"
 
 # Sidebar
 with st.sidebar:
-    st.header("⚙️ Model Settings")
+    st.header("Model Settings")
     
     season = st.selectbox("Season", [2024, 2023], index=0)
     max_week = st.slider("Weeks to Include", 1, 18, 10)
@@ -302,7 +302,7 @@ if st.session_state.model_trained:
         col1, col2 = st.columns(2)
         
         with col1:
-            st.subheader("🏠 Home Team")
+            st.subheader("Home Team")
             home_team = st.selectbox("Select Home Team", teams, key="home")
             
             if home_team:
@@ -312,7 +312,7 @@ if st.session_state.model_trained:
                 st.metric("Points Allowed", f"{home_data['points_allowed_per_game']:.1f}")
         
         with col2:
-            st.subheader("✈️ Away Team")
+            st.subheader("Away Team")
             away_team = st.selectbox("Select Away Team", [t for t in teams if t != home_team], key="away")
             
             if away_team:
@@ -321,7 +321,7 @@ if st.session_state.model_trained:
                 st.metric("Points Per Game", f"{away_data['points_per_game']:.1f}")
                 st.metric("Points Allowed", f"{away_data['points_allowed_per_game']:.1f}")
         
-        if st.button("🔮 Predict Game", type="primary", use_container_width=True):
+        if st.button("Predict Game", type="primary", use_container_width=True):
             home_stats = {
                 'win_rate': home_data['win_rate'],
                 'ppg': home_data['points_per_game'],
@@ -339,7 +339,7 @@ if st.session_state.model_trained:
             prediction = st.session_state.predictor.predict_game(home_stats, away_stats)
             
             st.markdown("---")
-            st.header("🎯 Prediction Results")
+            st.header("Prediction Results")
             
             col1, col2, col3 = st.columns(3)
             
